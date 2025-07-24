@@ -127,11 +127,9 @@ def main():
         
         archive_target_dir.mkdir(parents=True, exist_ok=True) 
 
-        for clip_file in CLIPS_DIR.iterdir():
-            if clip_file.is_file():
-                shutil.move(clip_file, archive_target_dir / clip_file.name)
-        shutil.rmtree(CLIPS_DIR)
-        print(f"clipsディレクトリの内容を {archive_target_dir} に移動し、元のclipsディレクトリを削除しました。")
+        for clip_file in list(CLIPS_DIR.glob("*.mp4")):
+            shutil.move(str(clip_file), archive_target_dir)
+        print(f"クリップを {archive_target_dir} にアーカイブしました。")
 
     except subprocess.CalledProcessError as e:
         print("⚠️ 処理中にエラーが発生しました:", e, file=sys.stderr)
