@@ -21,6 +21,9 @@ Gemini CLI を使用すると、対話形式で動画生成プロセスを制御
 1.  **Gemini CLI を起動します。**
 
     ```bash
+    # ログイン（確認 gcloud auth list）
+    gcloud auth application-default login
+
     # Gemini CLI の起動コマンド（環境に合わせて調整してください）
     gemini-cli
     ```
